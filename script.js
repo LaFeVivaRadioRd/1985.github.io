@@ -70,6 +70,28 @@ window.addEventListener('load', () => {
     durationLabel.textContent = audio.duration ? formatTime(audio.duration) : '0:00'; // Verificar si la duración está disponible
 });
 
+// Evento para manejar errores de reproducción
+audio.addEventListener('error', () => {
+    console.error("Error en el stream. Intentando reconectar...");
+    setTimeout(() => {
+        audio.currentTime = 0; // Reinicia el tiempo de audio
+        audio.play().catch(error => {
+            console.error("Error al intentar reproducir de nuevo:", error);
+        });
+    }, 3000); // Espera 3 segundos antes de intentar reconectar
+});
+
+// Comprobar periódicamente el estado del audio
+setInterval(() => {
+    if (audio.paused) {
+        console.log("El audio se detuvo, reiniciando...");
+        audio.currentTime = 0; // Reinicia el tiempo de audio
+        audio.play().catch(error => {
+            console.error("Error al intentar reproducir de nuevo:", error);
+        });
+    }
+}, 5000); // Comprueba cada 5 segundos
+
 // Manejar el clic en el botón "Entrar"
 document.getElementById('entrar-btn').onclick = function() {
     document.body.classList.add('fade-out'); // Agrega la clase para desvanecer
