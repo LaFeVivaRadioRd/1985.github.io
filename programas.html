@@ -93,17 +93,19 @@
 
         // Función para resaltar "EN VIVO" si el programa está en curso
         function highlightLivePrograms() {
-            const now = new Date();
+            const now = new Date(); // Obtener la hora local del usuario
+            const currentDay = now.toLocaleString('es-MX', { weekday: 'long' }); // Obtener el día actual en español
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
             const programList = document.querySelectorAll('#program-list li');
 
             programList.forEach((li) => {
+                const dayText = li.querySelector('.day').textContent; // Obtener el día del programa
                 const timeText = li.textContent.split('-')[1].trim(); // Extraer hora
                 const [hour, minute] = timeText.split(':').map(Number);
 
                 // Verificar si el programa está en curso
-                if (currentHour === hour && currentMinute >= minute && currentMinute < minute + 60) {
+                if (dayText.includes(currentDay) && hour === currentHour && currentMinute >= minute && currentMinute < minute + 60) {
                     const liveSpan = document.createElement('span');
                     liveSpan.className = 'live';
                     liveSpan.textContent = 'EN VIVO';
