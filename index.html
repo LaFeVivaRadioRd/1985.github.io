@@ -9,10 +9,26 @@
         body {
             transition: opacity 0.5s ease; /* Transición suave */
             opacity: 1;
+            position: relative; /* Necesario para posicionar el reloj */
         }
 
         .fade-out {
             opacity: 0; /* Se desvanecerá */
+        }
+
+        /* Estilos para el reloj neumórfico */
+        .clock {
+            position: absolute; /* Posiciona el reloj de manera absoluta */
+            top: 20px; /* Ajusta la posición desde la parte superior */
+            right: 20px; /* Ajusta la posición desde la derecha */
+            font-size: 1.5em; /* Tamaño del texto del reloj */
+            color: #fff; /* Color del texto blanco */
+            background: #1a1a1a; /* Color de fondo negro neumórfico */
+            border-radius: 12px; /* Bordes redondeados */
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), 
+                        -5px -5px 15px rgba(255, 255, 255, 0.1); /* Sombra neumórfica */
+            padding: 10px 15px; /* Espaciado interno */
+            text-align: center; /* Centra el texto */
         }
 
         /* Estilos para el botón neumórfico */
@@ -47,6 +63,7 @@
     </style>
 </head>
 <body>
+    <div class="clock" id="clock"></div> <!-- Reloj -->
     <div class="welcome-container">
         <a id="entrar-btn" class="neumorphic-button">
             <span>Entrar</span>
@@ -66,6 +83,18 @@
                 window.location.href = "bienvenidos.html"; // Cambia a la página después del desvanecimiento
             }, 500); // Tiempo de espera debe coincidir con la duración de la transición
         };
+
+        // Función para actualizar el reloj
+        function updateClock() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString('es-MX', options); // Cambiar 'es-MX' a la zona horaria que desees
+            document.getElementById('clock').textContent = timeString; // Actualiza el contenido del reloj
+        }
+
+        // Actualizar el reloj cada segundo
+        setInterval(updateClock, 1000);
+        updateClock(); // Llama una vez para establecer el tiempo inicial
     </script>
 </body>
 </html>
