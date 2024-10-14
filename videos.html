@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos | Test Neumorphism</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous" />
+    <style>
+        /* Estilo para que los videos de YouTube sean responsivos */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px; /* Ancho máximo para pantallas grandes */
+            margin: 0 auto; /* Centrar el contenedor */
+        }
+        .video-item {
+            margin: 20px 0;
+            width: 100%; /* Asegurarse de que no exceda el ancho del contenedor */
+        }
+        iframe {
+            width: 100%; /* Ajustar el ancho al contenedor */
+            height: auto; /* Ajustar la altura automáticamente */
+            aspect-ratio: 16 / 9; /* Mantener la relación de aspecto */
+            max-height: 450px; /* Altura máxima para pantallas grandes */
+        }
+
+        /* Estilos para pantallas más pequeñas */
+        @media (max-width: 600px) {
+            iframe {
+                max-height: 300px; /* Altura máxima para dispositivos móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content_main ctnt">
+        <h2>Mis Predicas en YouTube</h2>
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <h3>Título de la Predica 1</h3>
+                <iframe src="https://www.youtube.com/embed/tHcw0HKbohw" title="Video 1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-item">
+                <h3>Título de la Predica 2</h3>
+                <iframe src="https://www.youtube.com/embed/WRKR2cPRlAA" title="Video 2" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Video 3 -->
+            <div class="video-item">
+                <h3>Título de la Predica 3</h3>
+                <iframe src="https://www.youtube.com/embed/5pi-IXgx0-Q" title="Video 3" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Puedes añadir más videos aquí -->
+        </div>
+    </div>
+
+    <!-- Footer con Botones -->
+    <footer>
+        <div class="footer-buttons">
+            <button onclick="window.location.href='index.html'">INICIO</button>
+            <button onclick="window.location.href='programas.html'">PROGRAMAS</button>
+            <button onclick="window.location.href='videos.html'">VIDEOS</button>
+        </div>
+    </footer>
+</body>
+</html>

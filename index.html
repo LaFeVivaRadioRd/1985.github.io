@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Bienvenida</title>
+    <link rel="stylesheet" href="style2.css"> <!-- Apunta a style2.css -->
+    <style>
+        body {
+            transition: opacity 0.5s ease; /* Transición suave */
+            opacity: 1;
+        }
+
+        .fade-out {
+            opacity: 0; /* Se desvanecerá */
+        }
+
+        /* Opcional: Estilos para el botón al pasar el mouse */
+        .neumorphic-button {
+            transition: transform 0.3s ease; /* Suaviza el efecto al pasar el mouse */
+        }
+
+        .neumorphic-button:hover {
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <a id="entrar-btn" class="neumorphic-button">
+            <span>Entrar</span>
+        </a>
+    </div>
+    <div class="copyright">
+        <p>&copy; <span id="year"></span> LuBuDesign. Todos los derechos reservados.</p>
+    </div>
+    <script>
+        // Script para mostrar el año actual
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Manejar el clic en el botón "Entrar"
+        document.getElementById('entrar-btn').onclick = function() {
+            document.body.classList.add('fade-out'); // Agrega la clase para desvanecer
+            setTimeout(function() {
+                window.location.href = "bienvenidos.html"; // Cambia a la página después del desvanecimiento
+            }, 500); // Tiempo de espera debe coincidir con la duración de la transición
+        };
+    </script>
+</body>
+</html>

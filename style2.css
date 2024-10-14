@@ -1,0 +1,93 @@
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url('https://i.postimg.cc/GhN1wGY7/KMM-7825.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Que cubra toda la pantalla sin distorsionar */
+    background-position: center; /* Centrada en la pantalla */
+    background-attachment: fixed; /* Para que no se desplace con el scroll */
+    display: flex;
+    flex-direction: column; /* Cambiar a columna para permitir el pie de página */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Necesario para la posición absoluta del copyright */
+}
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 90vh;
+    padding-bottom: 5vh;
+}
+
+/* Botón neumórfico profesional */
+.neumorphic-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background: #282828; /* Un fondo más sutil */
+    border-radius: 50px; /* Forma más moderna y elegante */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5),
+                -10px -10px 30px rgba(255, 255, 255, 0.1);
+    text-decoration: none; /* Eliminar subrayado */
+    color: #ffffff; /* Texto en blanco */
+    font-size: 1.2rem;
+    font-weight: 600; /* Texto ligeramente más grueso para mayor claridad */
+    letter-spacing: 0.05em; /* Espaciado entre letras para un toque elegante */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efecto hover del botón */
+.neumorphic-button:hover {
+    transform: scale(1.05);
+    box-shadow: 12px 12px 35px rgba(0, 0, 0, 0.6),
+                -12px -12px 35px rgba(255, 255, 255, 0.2);
+    background: #343434; /* Cambio sutil del fondo al hacer hover */
+}
+
+/* Copyright en la parte inferior */
+.copyright {
+    position: absolute; /* Fijar el copyright en la parte inferior */
+    bottom: 10px; /* Margen desde el fondo */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajustar para centrar correctamente */
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    overflow: hidden; /* Para ocultar el desbordamiento */
+}
+
+.copyright p {
+    animation: marquee 20s linear infinite; /* Aumentar la duración para mejor visibilidad */
+    color: #ffffff; /* Texto en blanco */
+    font-size: 1rem; /* Tamaño del texto */
+}
+
+/* Animación de desplazamiento del copyright */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%); /* Comienza desde la derecha */
+    }
+    100% {
+        transform: translateX(-100%); /* Se desplaza a la izquierda */
+    }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .neumorphic-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .copyright p {
+        font-size: 0.8rem; /* Tamaño de texto más pequeño en dispositivos móviles */
+    }
+}
