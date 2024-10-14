@@ -15,13 +15,34 @@
             opacity: 0; /* Se desvanecerá */
         }
 
-        /* Opcional: Estilos para el botón al pasar el mouse */
+        /* Estilos para el botón neumórfico */
         .neumorphic-button {
-            transition: transform 0.3s ease; /* Suaviza el efecto al pasar el mouse */
+            display: inline-block; /* Asegura que el botón se comporte correctamente */
+            padding: 15px 30px; /* Aumenta el tamaño del botón */
+            font-size: 1.5em; /* Aumenta el tamaño de la fuente */
+            color: #333; /* Color del texto */
+            background: #e0e0e0; /* Color de fondo */
+            border-radius: 12px; /* Bordes redondeados */
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), 
+                        -5px -5px 15px rgba(255, 255, 255, 0.7); /* Sombra neumórfica */
+            text-decoration: none; /* Quita el subrayado del enlace */
+            transition: transform 0.3s ease, background 0.3s ease; /* Suaviza el efecto al pasar el mouse */
         }
 
         .neumorphic-button:hover {
             transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+            background: #d3d3d3; /* Color de fondo al pasar el mouse */
+        }
+
+        /* Estilos para el contenedor de bienvenida */
+        .welcome-container {
+            text-align: center; /* Centra el contenido */
+            margin-top: 20%; /* Ajusta el margen superior */
+        }
+
+        .copyright {
+            text-align: center; /* Centra el copyright */
+            margin-top: 20px; /* Añade un margen superior */
         }
     </style>
 </head>
