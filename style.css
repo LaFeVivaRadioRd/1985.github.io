@@ -96,7 +96,7 @@ body {
 #volume {
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  height: 16px;
   background: transparent;
   cursor: pointer;
 }
@@ -282,11 +282,10 @@ footer button {
   color: #ffffff; /* Color del texto blanco para resaltar */
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
 }
 
 footer button:hover {
-  background: #ffffff; /* Cambio a blanco al pasar el ratón */
-  color: #000000; /* Cambio de color del texto a negro */
-  transform: translateY(-3px); /* Elevar ligeramente el botón */
+  box-shadow: 
+    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.1); /* Sombra interna al pasar el mouse */
 }
