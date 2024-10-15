@@ -285,7 +285,12 @@ footer button {
 }
 
 footer button:hover {
-  box-shadow: 
-    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-    inset -5px -5px 10px rgba(255, 255, 255, 0.1); /* Sombra interna al pasar el mouse */
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Logo */
+#logo {
+  width: 250px; /* Nuevo tamaño para el logo */
+  height: auto; /* Mantiene la proporción */
+  margin-top: 20px; /* Espaciado hacia abajo */
 }
