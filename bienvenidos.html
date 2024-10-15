@@ -22,6 +22,7 @@
             top: 10px; 
             left: 10px; 
             z-index: 1000; 
+            transition: transform 0.4s; /* Transición para la transformación */
         }
         .bar {
             background-color: #fffcfc; 
@@ -120,6 +121,17 @@
         .custom-btn.active {
             background-color: #e7cc56; /* Color al hacer clic */
         }
+
+        /* Estilo para mostrar la "X" cuando el menú está activo */
+        .hamburger.toggle .bar:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px); /* Rotar y mover */
+        }
+        .hamburger.toggle .bar:nth-child(2) {
+            opacity: 0; /* Ocultar la barra del medio */
+        }
+        .hamburger.toggle .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px); /* Rotar y mover */
+        }
     </style>
 </head>
 <body>
@@ -172,7 +184,7 @@
 
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active'); 
-            hamburger.classList.toggle('toggle'); 
+            hamburger.classList.toggle('toggle'); // Cambia la clase del menú hamburguesa
             nav.setAttribute('aria-hidden', nav.classList.contains('active') ? 'false' : 'true');
         });
 
@@ -193,21 +205,13 @@
         document.getElementById('play').addEventListener('click', function() {
             if (audioElement.paused) {
                 audioElement.play();
-                document.getElementById('icon').classList.remove('fa-play');
-                document.getElementById('icon').classList.add('fa-pause');
-                this.classList.add('active'); // Cambiar a estado activo
+                this.querySelector('#icon').classList.remove('fa-play');
+                this.querySelector('#icon').classList.add('fa-pause');
             } else {
                 audioElement.pause();
-                document.getElementById('icon').classList.remove('fa-pause');
-                document.getElementById('icon').classList.add('fa-play');
-                this.classList.remove('active'); // Quitar estado activo
+                this.querySelector('#icon').classList.remove('fa-pause');
+                this.querySelector('#icon').classList.add('fa-play');
             }
-        });
-
-        audioElement.addEventListener('ended', function() {
-            document.getElementById('icon').classList.remove('fa-pause');
-            document.getElementById('icon').classList.add('fa-play');
-            document.getElementById('play').classList.remove('active'); // Quitar estado activo
         });
     </script>
 </body>
