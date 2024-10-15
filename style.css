@@ -222,6 +222,36 @@ body {
   opacity: 0.7;
 }
 
+/* Estilo de la barra de menú hamburguesa */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
+  margin: 1em;
+}
+
+.hamburger div {
+  height: 5px;
+  background-color: #f6f6f6; /* Color de las barras de hamburguesa */
+  margin: 3px 0;
+  transition: all 0.3s ease; /* Transiciones suaves */
+}
+
+.hamburger.toggle div:nth-child(1) {
+  transform: rotate(45deg) translateY(8px); /* Rotar la barra superior */
+}
+
+.hamburger.toggle div:nth-child(2) {
+  opacity: 0; /* Ocultar la barra del medio */
+}
+
+.hamburger.toggle div:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px); /* Rotar la barra inferior */
+}
+
 /* Botones del footer */
 footer {
   width: 100%;
@@ -252,36 +282,11 @@ footer button {
   color: #ffffff; /* Color del texto blanco para resaltar */
   cursor: pointer;
   transition: all 0.3s ease;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  position: relative;
 }
 
 footer button:hover {
-  background: #e7cc56; /* Color cambiado a #e7cc56 al pasar el ratón */
-  box-shadow: 
-    5px 5px 10px rgba(0, 0, 0, 0.3),
-    -5px -5px 10px rgba(255, 255, 255, 0.2);
-}
-
-/* Adaptabilidad móvil */
-@media (max-width: 600px) {
-  body {
-    background-size: cover;
-  }
-
-  .content_main {
-    padding: 1em;
-  }
-
-  .social-icon {
-    font-size: 1.2em;
-  }
-
-  /* Ajustes para el botón de reproducción en dispositivos móviles */
-  .custom-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 1.2em; /* Reducir tamaño del ícono en móvil */
-  }
+  background: #ffffff; /* Cambio a blanco al pasar el ratón */
+  color: #000000; /* Cambio de color del texto a negro */
+  transform: translateY(-3px); /* Elevar ligeramente el botón */
 }
