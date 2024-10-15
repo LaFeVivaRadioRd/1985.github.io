@@ -9,13 +9,17 @@
   font-family: "Noto Sans", sans-serif;
 }
 
-/* Estilo del cuerpo */
+/* Estilo del cuerpo con fondo */
 body {
-  background: #e0e5ec;
+  background-image: url('https://i.postimg.cc/GhN1wGY7/KMM-7825.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #333;
+  color: #f6f6f6; /* Texto más claro para mayor contraste */
+  min-height: 100vh;
 }
 
 /* Contenedor principal */
@@ -25,6 +29,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
 /* Estilo de la imagen de portada */
@@ -33,22 +38,22 @@ body {
   height: 330px;
   margin-bottom: 1em;
   border-radius: 30%;
-  background: #e0e5ec;
-  box-shadow: -10px -10px 20px #ffffff, 10px 10px 10px #babecc;
+  background: #2b2b2b; /* Fondo oscuro */
+  box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.7), 10px 10px 20px rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Evita que el contenido exceda el contenedor */
-  position: relative; /* Permite la posición del logo sobre la portada */
+  overflow: hidden;
 }
 
-/* Estilo de la cubierta sin animación por defecto */
+/* Estilo de la cubierta */
 .cover {
-  width: 0px; /* Cambiado a 0px */
-  height: 0px; /* Cambiado a 0px */
+  width: 0px;
+  height: 0px;
   border-radius: 0%;
 }
 
+/* Animación de rotación */
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
@@ -61,13 +66,13 @@ body {
   height: 10px;
   border-radius: 5px;
   margin: 1em 0;
-  background: #e0e5ec;
-  box-shadow: inset -5px -5px 10px #ffffff, inset 5px 5px 10px #babecc;
+  background: #b8ab52;
+  box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.7), inset 5px 5px 10px rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
 #progress {
-  width: 0%; /* Inicialmente, el progreso está en 0% */
+  width: 0%;
   height: 100%;
   background: linear-gradient(90deg, #76e2d0, #cc75ff);
   border-radius: 5px;
@@ -78,9 +83,9 @@ body {
   width: 350px;
   height: 10px;
   margin: 1em 0;
-  background: #e0e5ec;
+  background: #f6f6f6; /* Color barra volumen */
   border-radius: 5px;
-  box-shadow: inset -5px -5px 10px #ffffff, inset 5px 5px 10px #babecc;
+  box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.7), inset 5px 5px 10px rgba(255, 255, 255, 0.1);
 }
 
 #volume-container {
@@ -89,10 +94,10 @@ body {
 }
 
 #volume {
-  -webkit-appearance: none; /* Quitar el estilo predeterminado en Webkit */
+  -webkit-appearance: none;
   width: 100%;
   height: 10px;
-  background: transparent; /* Fondo transparente */
+  background: transparent;
   cursor: pointer;
 }
 
@@ -100,18 +105,18 @@ body {
 #volume::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px; /* Ancho del thumb */
-  height: 20px; /* Alto del thumb */
-  border-radius: 50%; /* Hacerlo circular */
-  background: linear-gradient(90deg, #76e2d0, #cc75ff); /* Color del thumb */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f6f6f6; /* Color actualizado */
   cursor: pointer;
 }
 
 #volume::-moz-range-thumb {
-  width: 20px; /* Ancho del thumb */
-  height: 20px; /* Alto del thumb */
-  border-radius: 50%; /* Hacerlo circular */
-  background: linear-gradient(90deg, #76e2d0, #cc75ff); /* Color del thumb */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f6f6f6; /* Color actualizado */
   cursor: pointer;
 }
 
@@ -121,7 +126,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
-  color: #636d79;
+  color: #849494;
 }
 
 /* Controles */
@@ -136,35 +141,47 @@ body {
   height: 90px;
   border: none;
   border-radius: 50%;
-  background: #e0e5ec;
-  box-shadow: -7px -7px 15px #ffffff, 7px 7px 15px #babecc;
+  background: #2b2b2b; /* Fondo oscuro */
+  box-shadow: -7px -7px 15px rgba(0, 0, 0, 0.7), 7px 7px 15px rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .custom-btn:active {
-  box-shadow: inset -7px -7px 15px #ffffff, inset 7px 7px 15px #babecc;
+  box-shadow: inset -7px -7px 15px rgba(0, 0, 0, 0.7), inset 7px 7px 15px rgba(255, 255, 255, 0.1);
 }
 
+/* Estilo de íconos por defecto */
 .custom-btn .icons {
   font-size: 1.5em;
-  color: #636d79;
+  color: #ffffff; /* Íconos blancos para mayor contraste */
+}
+
+/* Estilo activo para el botón de play */
+.custom-btn.active {
+  background: #ffffff; /* Cambia a blanco al hacer clic */
+  box-shadow: inset -7px -7px 15px rgba(0, 0, 0, 0.7), inset 7px 7px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Color del ícono al estar activo */
+.custom-btn.active .icons {
+  color: #000000; /* Cambia el color del ícono a negro */
 }
 
 /* Nueva Sección: Programación */
 .content_section {
-  background: #f5f5f5;
+  background: #333333; /* Fondo oscuro */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   padding: 20px;
   margin: 2em 0;
   width: 80%;
   max-width: 600px;
+  color: #e0e0e0;
 }
 
 .content_section h2 {
   margin-bottom: 1em;
-  color: #333;
 }
 
 .content_section ul {
@@ -177,42 +194,43 @@ body {
 
 /* Colores originales de cada red social */
 .facebook {
-    color: #3b5998; /* Azul Facebook */
+  color: #3b5998; /* Azul Facebook */
 }
 
 .youtube {
-    color: #FF0000; /* Rojo YouTube */
+  color: #FF0000; /* Rojo YouTube */
 }
 
 .instagram {
-    color: #C13584; /* Rosa Instagram */
+  color: #C13584; /* Rosa Instagram */
 }
 
 .tiktok {
-    color: #69C9D0; /* Azul Tiktok */
+  color: #69C9D0; /* Azul Tiktok */
 }
 
 .whatsapp {
-    color: #25D366; /* Verde Whatsapp */
+  color: #25D366; /* Verde Whatsapp */
 }
 
-/* Estilos opcionales para el hover */
+/* Hover de redes sociales */
 .nav a:hover {
-    opacity: 0.8; /* Efecto de hover (opcional) */
+  opacity: 0.8;
 }
-
 
 .social-icon:hover {
-    opacity: 0.7; /* Cambia la opacidad en hover para un efecto */
+  opacity: 0.7;
 }
 
 /* Botones del footer */
 footer {
   width: 100%;
-  background: #e0e5ec;
+  background: #2b2b2b; /* Fondo oscuro neomórfico */
   position: fixed;
   bottom: 0;
-  box-shadow: -2px -2px 5px #ffffff, 2px 2px 5px #babecc;
+  box-shadow: 
+    8px 8px 15px rgba(0, 0, 0, 0.5),
+    -8px -8px 15px rgba(255, 255, 255, 0.1);
 }
 
 .footer-buttons {
@@ -226,28 +244,44 @@ footer button {
   height: 40px;
   border: none;
   border-radius: 20px;
-  background: #e0e5ec;
-  box-shadow: -4px -4px 10px #ffffff, 4px 4px 10px #babecc;
+  background: #2b2b2b; /* Fondo oscuro neomórfico */
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px -5px 10px rgba(255, 255, 255, 0.1);
   font-size: 1em;
-  color: #333;
+  color: #ffffff; /* Color del texto blanco para resaltar */
   cursor: pointer;
   transition: all 0.3s ease;
-  text-overflow: ellipsis; /* Indica que el texto que no cabe será cortado */
-  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-  overflow: hidden; /* Esconde el texto que se desborda */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 footer button:hover {
-  background: #cc75ff;
+  background: #e7cc56; /* Color cambiado a #e7cc56 al pasar el ratón */
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Adaptabilidad móvil */
 @media (max-width: 600px) {
-    .content_main {
-        padding: 1em; /* Aumenta el padding en pantallas pequeñas */
-    }
+  body {
+    background-size: cover;
+  }
 
-    .social-icon {
-        font-size: 1.2em; /* Disminuir el tamaño de los íconos en móviles */
-    }
+  .content_main {
+    padding: 1em;
+  }
+
+  .social-icon {
+    font-size: 1.2em;
+  }
+
+  /* Ajustes para el botón de reproducción en dispositivos móviles */
+  .custom-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.2em; /* Reducir tamaño del ícono en móvil */
+  }
 }
