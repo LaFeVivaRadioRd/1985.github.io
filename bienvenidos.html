@@ -22,7 +22,7 @@
             top: 10px; 
             left: 10px; 
             z-index: 1000; 
-            transition: transform 0.4s; 
+            transition: transform 0.4s; /* Transición para la transformación */
         }
         .bar {
             background-color: #fffcfc; 
@@ -65,7 +65,7 @@
         }
         #volume-container {
             display: inline-block;
-            width: 80%; 
+            width: 80%; /* Ajusta el ancho como desees */
         }
         input[type="range"] {
             -webkit-appearance: none;
@@ -100,39 +100,39 @@
 
         /* Estilos para el botón de reproducción */
         .custom-btn {
-            background-color: #2b2b2b; 
+            background-color: #2b2b2b; /* Color de fondo original */
             color: white;
             border: none;
-            border-radius: 50%; 
-            padding: 30px 40px; /* Tamaño aumentado */
+            border-radius: 50%; /* Mantener el botón redondo */
+            padding: 15px 20px; /* Ajusta el tamaño del botón */
             cursor: pointer;
-            font-size: 2em; /* Aumentar el tamaño del icono */
+            font-size: 1.5em;
             transition: background-color 0.3s ease;
-            outline: none; 
+            outline: none; /* Quitar contorno */
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            width: 100px; /* Ancho aumentado */
-            height: 100px; /* Altura aumentada */
+            width: 70px; /* Ancho del botón */
+            height: 70px; /* Altura del botón */
             position: relative;
-            top: -30px; 
+            top: -30px; /* Mueve el botón de reproducción hacia arriba */
         }
 
         .custom-btn:focus {
-            outline: none;
+            outline: none; /* Quitar contorno al hacer clic */
         }
 
         .custom-btn.active {
-            background-color: #e7cc56; 
+            background-color: #e7cc56; /* Color al hacer clic */
         }
 
         /* Estilo para mostrar la "X" cuando el menú está activo */
         .hamburger.toggle .bar:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px); 
+            transform: rotate(45deg) translate(6px, 6px); /* Rotar y mover */
         }
         .hamburger.toggle .bar:nth-child(2) {
-            opacity: 0; 
+            opacity: 0; /* Ocultar la barra del medio */
         }
         .hamburger.toggle .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px); 
+            transform: rotate(-45deg) translate(6px, -6px); /* Rotar y mover */
         }
     </style>
 </head>
@@ -186,7 +186,7 @@
 
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active'); 
-            hamburger.classList.toggle('toggle'); 
+            hamburger.classList.toggle('toggle'); // Cambia la clase del menú hamburguesa
             nav.setAttribute('aria-hidden', nav.classList.contains('active') ? 'false' : 'true');
         });
 
