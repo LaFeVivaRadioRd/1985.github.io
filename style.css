@@ -290,7 +290,7 @@ footer button:hover {
 
 /* Logo */
 #logo {
-  width: 250px; /* Nuevo tamaño para el logo */
+  width: 180px; /* Nuevo tamaño para el logo */
   height: auto; /* Mantiene la proporción */
-  margin-top: 20px; /* Espaciado hacia abajo */
+  margin-top: 30px; /* Espaciado hacia abajo */
 }
