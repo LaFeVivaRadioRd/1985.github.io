@@ -60,7 +60,7 @@
         }
         /* Estilos para la barra de volumen */
         #volume-bar {
-            margin: 20px 0;
+            margin: 80px 0;
             text-align: center;
         }
         #volume-container {
@@ -112,6 +112,8 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
             width: 70px; /* Ancho del botón */
             height: 70px; /* Altura del botón */
+            position: relative;
+            top: -30px; /* Mueve el botón de reproducción hacia arriba */
         }
 
         .custom-btn:focus {
@@ -205,12 +207,12 @@
         document.getElementById('play').addEventListener('click', function() {
             if (audioElement.paused) {
                 audioElement.play();
-                this.querySelector('#icon').classList.remove('fa-play');
-                this.querySelector('#icon').classList.add('fa-pause');
+                document.getElementById('icon').classList.remove('fa-play');
+                document.getElementById('icon').classList.add('fa-pause');
             } else {
                 audioElement.pause();
-                this.querySelector('#icon').classList.remove('fa-pause');
-                this.querySelector('#icon').classList.add('fa-play');
+                document.getElementById('icon').classList.remove('fa-pause');
+                document.getElementById('icon').classList.add('fa-play');
             }
         });
     </script>
