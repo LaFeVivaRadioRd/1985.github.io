@@ -171,7 +171,7 @@
                 if (currentHour < 20) {
                     programName = "Música en vivo"; // Hasta las 8 PM
                 } else if (currentHour === 20 && currentMinute < 20) {
-                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                    programName = "Y Conocereis La Verdad y La Verdad Os Ará Libres"; // De 8 PM a 9:20 PM
                 } else {
                     programName = "Música en vivo"; // A partir de 9:20 PM
                 }
@@ -181,7 +181,7 @@
                 if (currentHour < 20) {
                     programName = "Música en vivo"; // Hasta las 8 PM
                 } else if (currentHour === 20 && currentMinute < 20) {
-                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                    programName = "Y Conocereis La Verdad y La Verdad Os Ará Libres"; // De 8 PM a 9:20 PM
                 } else {
                     programName = "Música en vivo"; // A partir de 9:20 PM
                 }
@@ -191,21 +191,23 @@
                 if (currentHour < 20) {
                     programName = "Música en vivo"; // Hasta las 8 PM
                 } else if (currentHour === 20 && currentMinute < 20) {
-                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                    programName = "Y Conocereis La Verdad y La Verdad Os Ará Libres"; // De 8 PM a 9:20 PM
                 } else {
                     programName = "Música en vivo"; // A partir de 9:20 PM
                 }
             } else if (currentDay === 6) { // Sábado
                 programName = "Música en vivo"; // Todo el día
-            } else if (currentDay === 0) { // Domingo
+            } else { // Domingo
                 programName = "Música en vivo"; // Todo el día
             }
 
-            statusElement.innerHTML = `<div class="live">${programName}</div>`; // Mostrar el programa actual
+            // Actualizar el estado en el div correspondiente
+            statusElement.innerHTML = programName;
+            statusElement.className = programName === "Música en vivo" ? "musical" : "live"; // Cambiar clase
         }
 
-        // Llamar a la función cuando la página se carga
-        window.onload = checkProgramStatus;
+        // Llama a la función para verificar el estado del programa al cargar la página
+        checkProgramStatus();
     </script>
 </body>
 </html>
