@@ -11,19 +11,27 @@
             background-color: #212529; /* Fondo negro */
             color: #fff;
             margin: 0;
-            height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* Centrar verticalmente */
+            flex-direction: column;
+            min-height: 100vh; /* Mantener la altura mínima de la ventana */
+            overflow-y: auto; /* Permitir desplazamiento de la página */
+            padding: 20px; /* Espaciado alrededor del contenido */
         }
 
         .schedule {
             max-width: 600px;
+            width: 90%; /* Hacer que se adapte al tamaño de pantalla */
             padding: 20px;
             background-color: #343a40; /* Fondo neumorphic en negro */
             border-radius: 20px;
             box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.5), 
                         -9px -9px 16px rgba(255, 255, 255, 0.1);
+            margin-top: 20px; /* Espacio arriba del contenedor */
+            display: flex;
+            flex-direction: column; /* Alinear en columna */
+            align-items: center; /* Centrar contenido en el eje horizontal */
         }
 
         h2 {
@@ -37,6 +45,7 @@
         ul {
             list-style: none;
             padding: 0;
+            width: 100%; /* Tomar el ancho completo del contenedor */
         }
 
         li {
@@ -47,20 +56,16 @@
             box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), 
                         inset -5px -5px 10px rgba(255, 255, 255, 0.1);
             font-size: 1.1em;
+            text-align: center; /* Centrar texto en cada elemento */
         }
 
-        .live {
+        .live, .musical {
             color: #FF4500; /* Naranja oscuro */
             font-weight: bold;
-            font-family: 'Arial Black', sans-serif; /* Tipo de letra diferente para en vivo */
-            animation: pulse 1.5s infinite; /* Efecto de pulso */
-        }
-
-        .musical {
-            color: #FF4500; /* Naranja oscuro */
-            font-weight: bold; 
             font-family: 'Arial Black', sans-serif; /* Tipo de letra diferente */
             animation: pulse 1.5s infinite; /* Efecto de pulso */
+            text-align: center; /* Centrar texto */
+            font-size: 1.5em; /* Aumentar el tamaño de fuente */
         }
 
         @keyframes pulse {
@@ -100,12 +105,35 @@
         .footer-buttons button:focus {
             outline: none;
         }
+
+        .program-list {
+            margin-top: 20px;
+            width: 100%; /* Tomar el ancho completo del contenedor */
+        }
+
+        .program-list h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #28a745; /* Verde */
+        }
     </style>
 </head>
 <body>
     <div class="schedule">
         <h2>Programación Actual</h2>
         <div id="current-status" class="status"></div>
+        <div class="program-list">
+            <h3>Programación Semanal</h3>
+            <ul>
+                <li>Lunes: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
+                <li>Martes: 6:30 PM - 7:30 PM - Programación Musical - EN VIVO</li>
+                <li>Miércoles: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
+                <li>Jueves: 8:00 PM - 9:00 PM - Programación Musical - EN VIVO</li>
+                <li>Viernes: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
+                <li>Sábado: 5:00 PM - 6:00 PM - Programación Musical - EN VIVO</li>
+                <li>Domingo: 7:00 PM - 8:00 PM - Programación Musical - EN VIVO</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Footer con Botones -->
@@ -134,15 +162,35 @@
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
             }
-            // Miércoles: 9:00 PM - 10:20 PM
-            else if (currentDay === 3 && currentHour === 21 && currentMinute >= 0 && currentMinute <= 20) {
+            // Martes: 6:30 PM - 7:30 PM
+            else if (currentDay === 2 && currentHour === 18 && currentMinute >= 30 && currentMinute <= 59) {
+                isLive = true;
+                programName = "Programación Musical - EN VIVO";
+            }
+            // Miércoles: 8:00 PM - 9:20 PM
+            else if (currentDay === 3 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
             }
-            // Viernes: 9:20 PM - 10:30 PM
-            else if (currentDay === 5 && (currentHour === 21 && currentMinute >= 20 || currentHour === 22 && currentMinute <= 30)) {
+            // Jueves: 8:00 PM - 9:00 PM
+            else if (currentDay === 4 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 59) {
+                isLive = true;
+                programName = "Programación Musical - EN VIVO";
+            }
+            // Viernes: 8:00 PM - 9:20 PM
+            else if (currentDay === 5 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
+            }
+            // Sábado: 5:00 PM - 6:00 PM
+            else if (currentDay === 6 && currentHour === 17 && currentMinute >= 0 && currentMinute <= 59) {
+                isLive = true;
+                programName = "Programación Musical - EN VIVO";
+            }
+            // Domingo: 7:00 PM - 8:00 PM
+            else if (currentDay === 0 && currentHour === 19 && currentMinute >= 0 && currentMinute <= 59) {
+                isLive = true;
+                programName = "Programación Musical - EN VIVO";
             }
 
             if (isLive) {
@@ -158,7 +206,7 @@
 
         // Llamar a la función de manera continua para verificar cambios de estado
         setInterval(checkProgramStatus, 60000); // Cada 60 segundos
-        checkProgramStatus(); // Llamar la primera vez al cargar la página
+        checkProgramStatus(); // Ejecutar de inmediato
     </script>
 </body>
 </html>
