@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV en Vivo</title>
+    <link rel="stylesheet" href="tv.css"> <!-- Apuntando a tv.css -->
+    <script>
+        const API_KEY = 'AIzaSyAVr92G2bgK8VS__OCKWgXc0nD7jGHIs-M'; // Tu clave de API
+        const CHANNEL_ID = 'UCGR7XcsvgbdinyEW4ZEtvwQ'; // Tu ID de canal
+
+        function fetchLiveVideo() {
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&eventType=live&type=video&part=snippet`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items.length > 0) {
+                        const videoId = data.items[0].id.videoId;
+                        document.getElementById('videoIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+                    } else {
+                        document.getElementById('videoIframe').src = ''; // Sin video en vivo
+                        console.log("No hay transmisión en vivo en este momento.");
+                    }
+                })
+                .catch(error => console.error('Error fetching live video:', error));
+        }
+
+        // Llama a la función al cargar la página
+        window.onload = fetchLiveVideo;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Bienvenido a TV en Vivo</h1>
+        <div class="video-container">
+            <iframe id="videoIframe" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="fetchLiveVideo()">Actualizar Video</button>
+        </div>
+    </div>
+</body>
+</html>
