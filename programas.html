@@ -125,13 +125,19 @@
         <div class="program-list">
             <h3>Programación Semanal</h3>
             <ul>
-                <li>Lunes: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
-                <li>Martes: 6:30 PM - 7:30 PM - Programación Musical - EN VIVO</li>
-                <li>Miércoles: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
-                <li>Jueves: 8:00 PM - 9:00 PM - Programación Musical - EN VIVO</li>
-                <li>Viernes: 8:00 PM - 9:20 PM - Y conoceréis la verdad y la verdad os hará libres</li>
-                <li>Sábado: 5:00 PM - 6:00 PM - Programación Musical - EN VIVO</li>
-                <li>Domingo: 7:00 PM - 8:00 PM - Programación Musical - EN VIVO</li>
+                <li>Lunes: 12:00 AM - 8:00 PM - Música en vivo</li>
+                <li>Lunes: 8:00 PM - 9:20 PM - Predicación en vivo</li>
+                <li>Lunes: 9:20 PM - Hasta el Martes: Música en vivo</li>
+                <li>Martes: 12:00 AM - 11:59 PM - Música en vivo</li>
+                <li>Miércoles: 12:00 AM - 8:00 PM - Música en vivo</li>
+                <li>Miércoles: 8:00 PM - 9:20 PM - Predicación en vivo</li>
+                <li>Miércoles: 9:20 PM - Hasta el Jueves: Música en vivo</li>
+                <li>Jueves: 12:00 AM - 11:59 PM - Música en vivo</li>
+                <li>Viernes: 12:00 AM - 8:00 PM - Música en vivo</li>
+                <li>Viernes: 8:00 PM - 9:20 PM - Predicación en vivo</li>
+                <li>Viernes: 9:20 PM - Hasta el Sábado: Música en vivo</li>
+                <li>Sábado: 12:00 AM - 11:59 PM - Música en vivo</li>
+                <li>Domingo: 12:00 AM - 11:59 PM - Música en vivo</li>
             </ul>
         </div>
     </div>
@@ -156,47 +162,49 @@
             const currentMinute = mxTime.getMinutes();
             const statusElement = document.getElementById('current-status');
 
-            let isLive = false;
-            let programName = "Programación Musical - EN VIVO"; // Por defecto
+            let programName = ""; // Por defecto
 
             // Lógica de programación ajustada a hora de México
-            if (currentDay === 1 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
-                isLive = true;
-                programName = "Y conoceréis la verdad y la verdad os hará libres";
-            } else if (currentDay === 2 && currentHour === 18 && currentMinute >= 30 && currentMinute <= 59) {
-                isLive = true;
-                programName = "Programación Musical - EN VIVO";
-            } else if (currentDay === 3 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
-                isLive = true;
-                programName = "Y conoceréis la verdad y la verdad os hará libres";
-            } else if (currentDay === 4 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 59) {
-                isLive = true;
-                programName = "Programación Musical - EN VIVO";
-            } else if (currentDay === 5 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
-                isLive = true;
-                programName = "Y conoceréis la verdad y la verdad os hará libres";
-            } else if (currentDay === 6 && currentHour === 17 && currentMinute >= 0 && currentMinute <= 59) {
-                isLive = true;
-                programName = "Programación Musical - EN VIVO";
-            } else if (currentDay === 0 && currentHour === 19 && currentMinute >= 0 && currentMinute <= 59) {
-                isLive = true;
-                programName = "Programación Musical - EN VIVO";
+            if (currentDay === 1) { // Lunes
+                if (currentHour < 20) {
+                    programName = "Música en vivo"; // Hasta las 8 PM
+                } else if (currentHour === 20 && currentMinute < 20) {
+                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                } else {
+                    programName = "Música en vivo"; // A partir de 9:20 PM
+                }
+            } else if (currentDay === 2) { // Martes
+                programName = "Música en vivo"; // Todo el día
+            } else if (currentDay === 3) { // Miércoles
+                if (currentHour < 20) {
+                    programName = "Música en vivo"; // Hasta las 8 PM
+                } else if (currentHour === 20 && currentMinute < 20) {
+                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                } else {
+                    programName = "Música en vivo"; // A partir de 9:20 PM
+                }
+            } else if (currentDay === 4) { // Jueves
+                programName = "Música en vivo"; // Todo el día
+            } else if (currentDay === 5) { // Viernes
+                if (currentHour < 20) {
+                    programName = "Música en vivo"; // Hasta las 8 PM
+                } else if (currentHour === 20 && currentMinute < 20) {
+                    programName = "Predicación en vivo"; // De 8 PM a 9:20 PM
+                } else {
+                    programName = "Música en vivo"; // A partir de 9:20 PM
+                }
+            } else if (currentDay === 6) { // Sábado
+                programName = "Música en vivo"; // Todo el día
+            } else if (currentDay === 0) { // Domingo
+                programName = "Música en vivo"; // Todo el día
             }
 
-            if (isLive) {
-                statusElement.textContent = programName;
-                statusElement.classList.add('live');
-                statusElement.classList.remove('musical');
-            } else {
-                statusElement.textContent = "Programación Musical - EN VIVO";
-                statusElement.classList.remove('live');
-                statusElement.classList.add('musical');
-            }
+            // Actualizar el estado actual
+            statusElement.innerText = programName;
         }
 
-        // Verificar el estado de la programación cada minuto
-        setInterval(checkProgramStatus, 60000);
-        checkProgramStatus(); // Llamar al inicio
+        // Verificar el estado del programa cuando la página se carga
+        window.onload = checkProgramStatus;
     </script>
 </body>
 </html>
