@@ -146,49 +146,39 @@
     </footer>
 
     <script>
-        // Función para determinar si estamos en un horario de programa en vivo o música
         function checkProgramStatus() {
             const now = new Date();
-            const currentDay = now.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-            const currentHour = now.getHours();
-            const currentMinute = now.getMinutes();
+            // Ajustar a hora de México (UTC-6)
+            const mxTime = new Date(now.getTime() - (6 * 60 * 60 * 1000)); // Resta 6 horas para UTC-6
+
+            const currentDay = mxTime.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+            const currentHour = mxTime.getHours();
+            const currentMinute = mxTime.getMinutes();
             const statusElement = document.getElementById('current-status');
 
             let isLive = false;
             let programName = "Programación Musical - EN VIVO"; // Por defecto
 
-            // Lunes: 8:00 PM - 9:20 PM
+            // Lógica de programación ajustada a hora de México
             if (currentDay === 1 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
-            }
-            // Martes: 6:30 PM - 7:30 PM
-            else if (currentDay === 2 && currentHour === 18 && currentMinute >= 30 && currentMinute <= 59) {
+            } else if (currentDay === 2 && currentHour === 18 && currentMinute >= 30 && currentMinute <= 59) {
                 isLive = true;
                 programName = "Programación Musical - EN VIVO";
-            }
-            // Miércoles: 8:00 PM - 9:20 PM
-            else if (currentDay === 3 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
+            } else if (currentDay === 3 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
-            }
-            // Jueves: 8:00 PM - 9:00 PM
-            else if (currentDay === 4 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 59) {
+            } else if (currentDay === 4 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 59) {
                 isLive = true;
                 programName = "Programación Musical - EN VIVO";
-            }
-            // Viernes: 8:00 PM - 9:20 PM
-            else if (currentDay === 5 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
+            } else if (currentDay === 5 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
                 isLive = true;
                 programName = "Y conoceréis la verdad y la verdad os hará libres";
-            }
-            // Sábado: 5:00 PM - 6:00 PM
-            else if (currentDay === 6 && currentHour === 17 && currentMinute >= 0 && currentMinute <= 59) {
+            } else if (currentDay === 6 && currentHour === 17 && currentMinute >= 0 && currentMinute <= 59) {
                 isLive = true;
                 programName = "Programación Musical - EN VIVO";
-            }
-            // Domingo: 7:00 PM - 8:00 PM
-            else if (currentDay === 0 && currentHour === 19 && currentMinute >= 0 && currentMinute <= 59) {
+            } else if (currentDay === 0 && currentHour === 19 && currentMinute >= 0 && currentMinute <= 59) {
                 isLive = true;
                 programName = "Programación Musical - EN VIVO";
             }
@@ -204,9 +194,9 @@
             }
         }
 
-        // Llamar a la función de manera continua para verificar cambios de estado
-        setInterval(checkProgramStatus, 60000); // Cada 60 segundos
-        checkProgramStatus(); // Ejecutar de inmediato
+        // Verificar el estado de la programación cada minuto
+        setInterval(checkProgramStatus, 60000);
+        checkProgramStatus(); // Llamar al inicio
     </script>
 </body>
 </html>
