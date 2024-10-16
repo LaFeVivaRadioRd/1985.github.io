@@ -42,6 +42,13 @@ iframe {
     gap: 10px;
 }
 
+.footer-controls {
+    display: flex; /* Estilo para los botones de pie de página */
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio superior para separar del contenido anterior */
+}
+
 .btn {
     background-color: #2a2a2a; /* Color de fondo del botón */
     border: none;
