@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programación | Test Neumorphism</title>
+    <title>Programación Semanal</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/a6eec1d329.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #212529; /* Fondo negro */
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .schedule {
             max-width: 600px;
-            margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #343a40; /* Fondo neumorphic en negro */
+            border-radius: 20px;
+            box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.5), 
+                        -9px -9px 16px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
             text-align: center;
             margin-bottom: 20px;
             color: #007bff;
+            font-size: 1.5em;
+            font-weight: bold;
         }
 
         ul {
@@ -35,42 +40,72 @@
         }
 
         li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 15px;
-            border-bottom: 1px solid #ddd;
-            font-size: 1.2em;
-            position: relative;
-        }
-
-        li span.day {
-            font-weight: bold;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #495057; /* Fondo de cada día */
+            border-radius: 10px;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), 
+                        inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+            font-size: 1.1em;
         }
 
         .live {
-            color: red;
+            color: #FF4500; /* Naranja oscuro */
             font-weight: bold;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            font-family: 'Arial Black', sans-serif; /* Tipo de letra diferente para en vivo */
+            animation: pulse 1.5s infinite; /* Efecto de pulso */
+        }
+
+        .musical {
+            color: #FF4500; /* Naranja oscuro */
+            font-weight: bold; 
+            font-family: 'Arial Black', sans-serif; /* Tipo de letra diferente */
+            animation: pulse 1.5s infinite; /* Efecto de pulso */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Aumenta al 110% */
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .footer-buttons button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .footer-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer-buttons button:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
-    <div class="content_main ctnt">
-        <div class="schedule">
-            <h2>Programación Semanal</h2>
-            <ul id="program-list">
-                <li><span class="day">Lunes:</span> La Verdad Os Hará Libres - 8:00 PM a 9:15 PM</li>
-                <li><span class="day">Martes:</span> Programa Musical - 7:00 AM</li>
-                <li><span class="day">Miércoles:</span> La Verdad Os Hará Libres - 9:00 PM a 10:15 PM</li>
-                <li><span class="day">Jueves:</span> Programa Musical - 7:00 AM</li>
-                <li><span class="day">Viernes:</span> La Verdad Os Hará Libres - 9:00 PM a 10:15 PM</li>
-                <li><span class="day">Sábado:</span> Programa Musical - 7:00 AM</li>
-                <li><span class="day">Domingo:</span> Programa Musical - 7:00 AM</li>
-            </ul>
-        </div>
+    <div class="schedule">
+        <h2>Programación Actual</h2>
+        <div id="current-status" class="status"></div>
     </div>
 
     <!-- Footer con Botones -->
@@ -83,39 +118,47 @@
     </footer>
 
     <script>
-        // Cargar el reproductor de audio
-        document.addEventListener('DOMContentLoaded', () => {
-            const audioIframe = document.createElement('iframe');
-            audioIframe.src = 'audio.html';
-            audioIframe.style.display = 'none'; // Ocultar el iframe
-            document.body.appendChild(audioIframe);
-        });
-
-        // Función para resaltar "EN VIVO" si el programa está en curso
-        function highlightLivePrograms() {
-            const now = new Date(); // Obtener la hora local del usuario
-            const currentDay = now.toLocaleString('es-MX', { weekday: 'long' }); // Obtener el día actual en español
+        // Función para determinar si estamos en un horario de programa en vivo o música
+        function checkProgramStatus() {
+            const now = new Date();
+            const currentDay = now.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
-            const programList = document.querySelectorAll('#program-list li');
+            const statusElement = document.getElementById('current-status');
 
-            programList.forEach((li) => {
-                const dayText = li.querySelector('.day').textContent; // Obtener el día del programa
-                const timeText = li.textContent.split('-')[1].trim(); // Extraer hora
-                const [hour, minute] = timeText.split(':').map(Number);
+            let isLive = false;
+            let programName = "Programación Musical - EN VIVO"; // Por defecto
 
-                // Verificar si el programa está en curso
-                if (dayText.includes(currentDay) && hour === currentHour && currentMinute >= minute && currentMinute < minute + 60) {
-                    const liveSpan = document.createElement('span');
-                    liveSpan.className = 'live';
-                    liveSpan.textContent = 'EN VIVO';
-                    li.appendChild(liveSpan);
-                }
-            });
+            // Lunes: 8:00 PM - 9:20 PM
+            if (currentDay === 1 && currentHour === 20 && currentMinute >= 0 && currentMinute <= 20) {
+                isLive = true;
+                programName = "Y conoceréis la verdad y la verdad os hará libres";
+            }
+            // Miércoles: 9:00 PM - 10:20 PM
+            else if (currentDay === 3 && currentHour === 21 && currentMinute >= 0 && currentMinute <= 20) {
+                isLive = true;
+                programName = "Y conoceréis la verdad y la verdad os hará libres";
+            }
+            // Viernes: 9:20 PM - 10:30 PM
+            else if (currentDay === 5 && (currentHour === 21 && currentMinute >= 20 || currentHour === 22 && currentMinute <= 30)) {
+                isLive = true;
+                programName = "Y conoceréis la verdad y la verdad os hará libres";
+            }
+
+            if (isLive) {
+                statusElement.textContent = programName;
+                statusElement.classList.add('live');
+                statusElement.classList.remove('musical');
+            } else {
+                statusElement.textContent = "Programación Musical - EN VIVO";
+                statusElement.classList.remove('live');
+                statusElement.classList.add('musical');
+            }
         }
 
-        // Llamar a la función al cargar la página
-        highlightLivePrograms();
+        // Llamar a la función de manera continua para verificar cambios de estado
+        setInterval(checkProgramStatus, 60000); // Cada 60 segundos
+        checkProgramStatus(); // Llamar la primera vez al cargar la página
     </script>
 </body>
 </html>
