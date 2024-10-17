@@ -8,7 +8,7 @@
     <script>
         const API_KEY = 'AIzaSyAVr92G2bgK8VS__OCKWgXc0nD7jGHIs-M'; // Tu clave de API
         const CHANNEL_ID = 'UCGR7XcsvgbdinyEW4ZEtvwQ'; // Tu ID de canal
-        const RADIO_URL = 'https://www.ssh101.com/securelive/index.php?id=radiogenap7'; // URL del segundo iframe
+        const GIA_TV_URL = 'https://gia.tv/watchssh101i.php?sn=radiogenapcristiana@gmail.com'; // URL del iframe de Gia TV
 
         function fetchLiveVideo() {
             fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&eventType=live&type=video&part=snippet`)
@@ -25,25 +25,27 @@
                 .catch(error => console.error('Error fetching live video:', error));
         }
 
-        function checkRadioLive() {
-            // Ocultamos el iframe por defecto
-            document.getElementById('radioIframe').style.display = 'none';
+        function checkGiaLive() {
+            // Ocultamos el iframe de Gia TV por defecto
+            const giaTvIframe = document.getElementById('giaTvIframe');
+            giaTvIframe.style.display = 'none';
 
-            fetch(RADIO_URL, { method: 'GET', mode: 'no-cors' })
-                .then(() => {
-                    // Mostrar iframe si la respuesta es válida
-                    document.getElementById('radioIframe').style.display = 'block';
-                    document.getElementById('radioIframe').src = RADIO_URL;
-                })
-                .catch(error => {
-                    console.log("No hay transmisión en vivo en este momento (Radio).", error);
-                });
+            // Aquí puedes agregar tu lógica para verificar si hay transmisión activa en Gia TV
+            // Para el ejemplo, asumiendo que siempre hay transmisión:
+            giaTvIframe.style.display = 'block'; // Muestra el iframe de Gia TV
+
+            // Si el iframe de Gia TV tiene una URL válida, entonces se carga
+            giaTvIframe.src = GIA_TV_URL; // Asignar la URL
+
+            // Si hay alguna lógica para determinar si la transmisión está activa, puedes esconder el iframe aquí
+            // Por ejemplo, si no hay transmisión, descomenta la siguiente línea:
+            // giaTvIframe.style.display = 'none'; // Ocultar el iframe si no hay transmisión
         }
 
         // Llama a las funciones al cargar la página
         window.onload = function() {
             fetchLiveVideo();
-            checkRadioLive();
+            checkGiaLive();
         };
     </script>
 </head>
@@ -54,9 +56,9 @@
             <iframe id="videoIframe" src="" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <!-- Añadir el iframe con la nueva URL proporcionada, inicialmente oculto -->
+        <!-- Añadir el iframe de Gia TV, inicialmente oculto -->
         <div class="video-container">
-            <iframe id="radioIframe" src="" frameborder="0" scrolling="no" allowfullscreen="true" webkitAllowFullScreen="true" align="middle" width="640" height="360" style="display: none;"></iframe>
+            <iframe id="giaTvIframe" src="" frameborder="0" scrolling="no" allowfullscreen="true" webkitAllowFullScreen="true" align="middle" width="852" height="480" style="display: none;"></iframe>
         </div>
 
         <div class="controls">
