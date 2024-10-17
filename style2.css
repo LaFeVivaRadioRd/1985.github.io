@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('/imagenes/fondo.JPG'); /* Asegúrate de que el nombre y extensión coinciden */
+    background-image: url('imagenes/fondo.JPG'); /* Asegúrate de que el nombre y extensión coinciden */
     background-size: cover; /* Que cubra toda la pantalla sin distorsionar */
     background-position: center; /* Centrada en la pantalla */
     background-attachment: fixed; /* Para que no se desplace con el scroll */
