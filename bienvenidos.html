@@ -38,7 +38,6 @@
             width: 250px;
             height: 100%;
             background-color: rgba(255, 255, 255, 0.9); 
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
             transition: right 0.3s ease; 
             z-index: 999; 
         }
@@ -109,7 +108,6 @@
             font-size: 1.5em;
             transition: background-color 0.3s ease;
             outline: none; /* Quitar contorno */
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
             width: 70px; /* Ancho del botón */
             height: 70px; /* Altura del botón */
             position: relative;
@@ -140,7 +138,7 @@
     <div class="content_main ctnt">
         <div id="content-cover">
             <img class="cover" src="https://i.ibb.co/G3qL1XT/img.webp" alt="PlayList" />
-            <img class="logo rotate" src="https://i.postimg.cc/pT6X0k6d/Logo-Gen-Ap.png" alt="Logo" />
+            <img class="logo rotate" src="imagenes/Logo GenAp.png" alt="Logo" /> <!-- Cambiado aquí -->
         </div>
         
         <div id="volume-bar">
@@ -164,23 +162,22 @@
 
     <nav class="nav" id="nav" aria-hidden="true">
         <ul>
-<li><a href="https://www.facebook.com/RadioGenApCristiana" target="_blank" aria-label="Facebook" style="color: #3b5998;"><i class="fab fa-facebook-f"></i></a></li>
-<li><a href="https://www.youtube.com/@luisbuenotv" target="_blank" aria-label="YouTube" style="color: #ff0000;"><i class="fab fa-youtube"></i></a></li>
-<li><a href="https://www.instagram.com/radiogenapcristiana/" target="_blank" aria-label="Instagram" style="color: #c13584;"><i class="fab fa-instagram"></i></a></li>
-<li><a href="https://www.tiktok.com/@radiogenapcristiana" target="_blank" aria-label="TikTok" style="color: #000000;"><i class="fab fa-tiktok"></i></a></li>
-<li><a href="https://api.whatsapp.com/send?phone=+522361079311&text=Dios%20Les%20Bendiga%20?%C2%A1%20Tengo%20una%20petici%C3%B3n" target="_blank" aria-label="WhatsApp" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a></li>
-<li><a href="https://play.google.com/store/apps/details?id=radiogenap.cristiana" target="_blank" aria-label="Descargar App" style="color: #3DDC84;"><i class="fab fa-android"></i></a></li>
-<li><a href="https://www.facebook.com/sharer/sharer.php?u=https://play.google.com/store/apps/details?id=radiogenap.cristiana" target="_blank" aria-label="Compartir en Facebook" style="color: #3b5998;"><i class="fas fa-share-square"></i></a></li>
-
+            <li><a href="https://www.facebook.com/RadioGenApCristiana" target="_blank" aria-label="Facebook" style="color: #3b5998;"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://www.youtube.com/@luisbuenotv" target="_blank" aria-label="YouTube" style="color: #ff0000;"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://www.instagram.com/radiogenapcristiana/" target="_blank" aria-label="Instagram" style="color: #c13584;"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.tiktok.com/@radiogenapcristiana" target="_blank" aria-label="TikTok" style="color: #000000;"><i class="fab fa-tiktok"></i></a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=+522361079311&text=Dios%20Les%20Bendiga%20?%C2%A1%20Tengo%20una%20petici%C3%B3n" target="_blank" aria-label="WhatsApp" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=radiogenap.cristiana" target="_blank" aria-label="Descargar App" style="color: #3DDC84;"><i class="fab fa-android"></i></a></li>
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://play.google.com/store/apps/details?id=radiogenap.cristiana" target="_blank" aria-label="Compartir en Facebook" style="color: #3b5998;"><i class="fas fa-share-square"></i></a></li>
         </ul>
     </nav>
 
     <footer>
         <div class="footer-buttons">
             <button onclick="window.location.href='bienvenidos.html'" aria-label="Ir a la página de inicio">INICIO</button>
-            <button onclick="window.location.href='programacion.html'" aria-label="Ir a la página de programacion">PROGRAMACION</button>
+            <button onclick="window.location.href='programacion.html'" aria-label="Ir a la página de programación">PROGRAMACION</button>
             <button onclick="window.location.href='videos.html'" aria-label="Ir a la sección de videos">VIDEOS</button>  
-            <button onclick="window.location.href='tvenvivo.html'" aria-label="Ir a la sección de videos">TV EN VIVO</button>
+            <button onclick="window.location.href='tvenvivo.html'" aria-label="Ir a la sección de TV en vivo">TV EN VIVO</button>
         </div>
     </footer>
 
@@ -189,41 +186,32 @@
         const nav = document.getElementById('nav');
 
         hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active'); 
-            hamburger.classList.toggle('toggle'); // Cambia la clase del menú hamburguesa
-            nav.setAttribute('aria-hidden', nav.classList.contains('active') ? 'false' : 'true');
+            nav.classList.toggle('active'); // Cambiar la clase active
+            hamburger.classList.toggle('toggle'); // Cambiar la clase de hamburguesa
+            nav.setAttribute('aria-hidden', nav.classList.contains('active') ? 'false' : 'true'); // Accesibilidad
         });
 
-        const volumeControl = document.getElementById('volume');
-        const audioElement = new Audio('https://stream.zeno.fm/ajnldia1z5utv');
-
-        // Cargar el volumen guardado
-        const savedVolume = localStorage.getItem('volume');
-        if (savedVolume) {
-            volumeControl.value = savedVolume;
-            audioElement.volume = savedVolume;
-        }
-
-        volumeControl.addEventListener('input', () => {
-            audioElement.volume = volumeControl.value;
-            localStorage.setItem('volume', volumeControl.value); // Guardar volumen
-        });
-
+        const audio = new Audio('https://stream.zeno.fm/ajnldia1z5utv'); // Cambia 'your-stream-url' por tu enlace de Zeno
         const playButton = document.getElementById('play');
         const icon = document.getElementById('icon');
 
         playButton.addEventListener('click', () => {
-            if (audioElement.paused) {
-                audioElement.play();
+            if (audio.paused) {
+                audio.play();
                 icon.classList.remove('fa-play');
                 icon.classList.add('fa-pause');
-                playButton.classList.add('active'); // Cambia el color del botón al reproducir
+                playButton.classList.add('active');
             } else {
-                audioElement.pause();
+                audio.pause();
                 icon.classList.remove('fa-pause');
                 icon.classList.add('fa-play');
-                playButton.classList.remove('active'); // Restaura el color del botón al pausar
+                playButton.classList.remove('active');
             }
+        });
+
+        const volumeSlider = document.getElementById('volume');
+        volumeSlider.addEventListener('input', (event) => {
+            audio.volume = event.target.value; // Ajustar el volumen
         });
     </script>
 </body>
