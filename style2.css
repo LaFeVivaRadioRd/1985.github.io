@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('https://i.postimg.cc/GhN1wGY7/KMM-7825.jpg'); /* Imagen de fondo */
+    background-image: url('imagenes/fondo.jpg'); /* Ruta local de la imagen */
     background-size: cover; /* Que cubra toda la pantalla sin distorsionar */
     background-position: center; /* Centrada en la pantalla */
     background-attachment: fixed; /* Para que no se desplace con el scroll */
