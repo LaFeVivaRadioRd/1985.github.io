@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('imagenes/fondo.jpg'); /* Ruta local de la imagen */
+    background-image: url('imagenes/fondo.jpg'); /* Asegúrate de que el nombre y extensión coinciden */
     background-size: cover; /* Que cubra toda la pantalla sin distorsionar */
     background-position: center; /* Centrada en la pantalla */
     background-attachment: fixed; /* Para que no se desplace con el scroll */
@@ -56,7 +56,7 @@ body {
 
 /* Copyright en la parte inferior */
 .copyright {
-    position: absolute; /* Fijar el copyright en la parte inferior */
+    position: absolute; /* Fijar el copyright */
     bottom: 10px; /* Margen desde el fondo */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajustar para centrar correctamente */
