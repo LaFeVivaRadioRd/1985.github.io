@@ -142,13 +142,15 @@ body {
   border: none;
   border-radius: 50%;
   background: #2b2b2b; /* Fondo oscuro */
-  box-shadow: -7px -7px 15px rgba(0, 0, 0, 0.7), 7px 7px 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    -7px -7px 15px rgba(0, 0, 0, 0.5),
+    7px 7px 15px rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .custom-btn:active {
-  box-shadow: inset -7px -7px 15px rgba(0, 0, 0, 0.7), inset 7px 7px 15px rgba(255, 255, 255, 0.1);
+  box-shadow: inset -7px -7px 15px rgba(0, 0, 0, 0.5), inset 7px 7px 15px rgba(255, 255, 255, 0.1);
 }
 
 /* Estilo de íconos por defecto */
@@ -160,7 +162,9 @@ body {
 /* Estilo activo para el botón de play */
 .custom-btn.active {
   background: #2b2b2b; /* Mantener fondo oscuro */
-  box-shadow: -7px -7px 15px rgba(0, 0, 0, 0.7), 7px 7px 15px rgba(255, 255, 255, 0.1); /* Sombra igual que el estado normal */
+  box-shadow: 
+    -7px -7px 15px rgba(0, 0, 0, 0.5),
+    7px 7px 15px rgba(255, 255, 255, 0.1); /* Sombra igual que el estado normal */
 }
 
 /* Color del ícono al estar activo */
@@ -266,7 +270,7 @@ footer {
 .footer-buttons {
   display: flex;
   justify-content: space-around;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 footer button {
@@ -274,50 +278,24 @@ footer button {
   height: 40px;
   border: none;
   border-radius: 20px; /* Bordes redondeados */
-  background: #b8ab52; /* Color del botón */
+  background: #2b2b2b; /* Fondo oscuro */
   color: white; /* Color del texto */
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Transiciones suaves */
-  font-size: 1em; /* Ajustar tamaño de la fuente */
-  padding: 10px; /* Añadir padding para ajustar el texto */
-  overflow: hidden; /* Evitar que el texto sobresalga */
-  text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es muy largo */
-  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+  font-size: 0.7em; /* Ajustar tamaño de la fuente */
+  padding: 10px; /* Añadir padding para más espacio interno */
+  box-shadow: 
+    -5px -5px 10px rgba(0, 0, 0, 0.5),
+    5px 5px 10px rgba(255, 255, 255, 0.1);
 }
 
 footer button:hover {
-  background: #a09b46; /* Efecto hover */
+  background: rgba(255, 255, 255, 0.1); /* Cambio de color en hover */
+  transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
 }
 
-/* Estilo para la lista de horarios */
-.schedule {
-  margin: 20px 0;
-  padding: 10px;
-  border: 1px solid #444; /* Borde más claro */
-  border-radius: 5px;
-  background-color: rgba(50, 50, 50, 0.7); /* Fondo semi-transparente */
-  color: #f0f0f0; /* Texto claro */
-}
-
-/* Estilo de horarios individuales */
-.schedule-item {
-  margin: 5px 0;
-}
-
-/* Estilo de enlaces de la programación */
-.schedule-item a {
-  color: #b8ab52; /* Color de enlace */
-  text-decoration: none;
-}
-
-.schedule-item a:hover {
-  text-decoration: underline; /* Subrayar al pasar el cursor */
-}
-
-/* Estilo de iconos de redes sociales en el footer */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
+/* Estilo de íconos en los botones del footer */
+footer .icon {
+  margin-right: 2px;
+  font-size: 1em; /* Aumentar el tamaño del ícono */
 }
