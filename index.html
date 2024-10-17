@@ -87,7 +87,7 @@
         // Función para actualizar el reloj
         function updateClock() {
             const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }; // Cambia a formato 12 horas con segundos
             const timeString = now.toLocaleTimeString('es-MX', options); // Cambiar 'es-MX' a la zona horaria que desees
             document.getElementById('clock').textContent = timeString; // Actualiza el contenido del reloj
         }
