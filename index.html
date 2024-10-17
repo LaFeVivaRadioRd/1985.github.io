@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Bienvenida</title>
-    <link rel="stylesheet" href="style2.css"> <!-- Apunta a style2.css -->
+    <link rel="stylesheet" href="style2.css"> <!-- Asegúrate de que el archivo CSS esté en la misma ubicación que este HTML -->
     <style>
         body {
             background-image: url('imagenes/fondo.jpg'); /* Apunta a la imagen en la carpeta "imagenes" */
@@ -13,10 +13,11 @@
             transition: opacity 0.5s ease; /* Transición suave */
             opacity: 1;
             position: relative; /* Necesario para posicionar el reloj */
+            height: 100vh; /* Asegura que el fondo cubra toda la ventana */
         }
 
         .fade-out {
-            opacity: 0; /* Se desvanecerá */
+            opacity: 0; /* Efecto de desvanecimiento */
         }
 
         /* Estilos para el reloj neumórfico */
@@ -90,8 +91,8 @@
         // Función para actualizar el reloj
         function updateClock() {
             const now = new Date();
-            const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }; // Cambia a formato 12 horas con segundos
-            const timeString = now.toLocaleTimeString('es-MX', options); // Cambiar 'es-MX' a la zona horaria que desees
+            const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }; // Formato 12 horas
+            const timeString = now.toLocaleTimeString('es-MX', options); // Ajusta según la zona horaria
             document.getElementById('clock').textContent = timeString; // Actualiza el contenido del reloj
         }
 
