@@ -8,6 +8,7 @@
     <script>
         const API_KEY = 'AIzaSyAVr92G2bgK8VS__OCKWgXc0nD7jGHIs-M'; // Tu clave de API
         const CHANNEL_ID = 'UCGR7XcsvgbdinyEW4ZEtvwQ'; // Tu ID de canal
+        const RADIO_URL = 'https://www.ssh101.com/securelive/index.php?id=radiogenap7'; // URL del segundo iframe
 
         function fetchLiveVideo() {
             fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&eventType=live&type=video&part=snippet`)
@@ -17,15 +18,33 @@
                         const videoId = data.items[0].id.videoId;
                         document.getElementById('videoIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
                     } else {
-                        document.getElementById('videoIframe').src = ''; // Sin video en vivo
-                        console.log("No hay transmisión en vivo en este momento.");
+                        document.getElementById('videoIframe').style.display = 'none'; // Ocultar si no hay transmisión
+                        console.log("No hay transmisión en vivo en este momento (YouTube).");
                     }
                 })
                 .catch(error => console.error('Error fetching live video:', error));
         }
 
-        // Llama a la función al cargar la página
-        window.onload = fetchLiveVideo;
+        function checkRadioLive() {
+            // Ocultamos el iframe por defecto
+            document.getElementById('radioIframe').style.display = 'none';
+
+            fetch(RADIO_URL, { method: 'GET', mode: 'no-cors' })
+                .then(() => {
+                    // Mostrar iframe si la respuesta es válida
+                    document.getElementById('radioIframe').style.display = 'block';
+                    document.getElementById('radioIframe').src = RADIO_URL;
+                })
+                .catch(error => {
+                    console.log("No hay transmisión en vivo en este momento (Radio).", error);
+                });
+        }
+
+        // Llama a las funciones al cargar la página
+        window.onload = function() {
+            fetchLiveVideo();
+            checkRadioLive();
+        };
     </script>
 </head>
 <body>
@@ -34,11 +53,17 @@
         <div class="video-container">
             <iframe id="videoIframe" src="" frameborder="0" allowfullscreen></iframe>
         </div>
+
+        <!-- Añadir el iframe con la nueva URL proporcionada, inicialmente oculto -->
+        <div class="video-container">
+            <iframe id="radioIframe" src="" frameborder="0" scrolling="no" allowfullscreen="true" webkitAllowFullScreen="true" align="middle" width="640" height="360" style="display: none;"></iframe>
+        </div>
+
         <div class="controls">
             <button class="btn" onclick="fetchLiveVideo()">Actualizar Video</button>
         </div>
         <div class="footer-controls">
-            <a href="bienvenidos.html"><button class="btn">inicio</button></a>
+            <a href="bienvenidos.html"><button class="btn">Inicio</button></a>
             <a href="programacion.html"><button class="btn">Programación</button></a>
             <a href="videos.html"><button class="btn">Videos</button></a>
         </div>
