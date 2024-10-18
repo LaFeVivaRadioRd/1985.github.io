@@ -11,7 +11,7 @@
 
 /* Estilo del cuerpo con fondo */
 body {
-  background-image: url('https://github.com/LaFeVivaRadioRd/1985.github.io/blob/main/imagenes/fondo.JPG');
+  background-image: url('https://raw.githubusercontent.com/LaFeVivaRadioRd/1985.github.io/main/imagenes/fondo.JPG'); /* URL corregida */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -290,12 +290,37 @@ footer button {
 }
 
 footer button:hover {
-  background: rgba(255, 255, 255, 0.1); /* Cambio de color en hover */
-  transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
+  background-color: #4a4a4a; /* Color al pasar el cursor */
+  transform: scale(1.05); /* Aumentar tamaño al pasar el cursor */
 }
 
-/* Estilo de íconos en los botones del footer */
-footer .icon {
-  margin-right: 2px;
-  font-size: 1em; /* Aumentar el tamaño del ícono */
+footer button:active {
+  transform: scale(0.95); /* Reducir tamaño al hacer clic */
+}
+
+/* Media Queries para mejorar la responsividad */
+@media (max-width: 768px) {
+  .custom-btn {
+    width: 70px;
+    height: 70px;
+  }
+
+  footer button {
+    width: 100px; /* Reducir tamaño en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 10px; /* Añadir padding para pantallas pequeñas */
+  }
+
+  .custom-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  footer button {
+    width: 80px; /* Reducir aún más tamaño */
+  }
 }
