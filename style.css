@@ -11,15 +11,15 @@
 
 /* Estilo del cuerpo con fondo */
 body {
-  background-image: url('https://raw.githubusercontent.com/LaFeVivaRadioRd/1985.github.io/main/imagenes/fondo.JPG'); /* URL corregida */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #f6f6f6; /* Texto más claro para mayor contraste */
-  min-height: 100vh;
+    background-image: url('https://github.com/LaFeVivaRadioRd/1985.github.io/raw/main/imagenes/fondo.JPG'); /* URL de la imagen de fondo */
+    background-size: cover; /* Que cubra toda la pantalla sin distorsionar */
+    background-position: center; /* Centrada en la pantalla */
+    background-attachment: fixed; /* Para que no se desplace con el scroll */
+    display: flex;
+    flex-direction: column; /* Cambiar a columna para permitir el pie de página */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Contenedor principal */
